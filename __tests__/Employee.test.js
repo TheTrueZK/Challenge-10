@@ -1,0 +1,10 @@
+const { default: test } = require('node:test');
+const Employee = require('../lib/Employee');
+
+test('generates employee object', () => {
+    const employee = new Employee('Jerry', 45, 'jerryboberry@gmail.com');
+
+    expect(employee.name).toEqual(expect.any(String));
+    expect(employee.id).toEqual(expect.any(Number));
+    expect(employee.email).toEqual(expect.any(String));
+});
