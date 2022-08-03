@@ -18,26 +18,54 @@ const addEmployee = () => {
             message: "Select your employee's position",
             choices: ['Employee', 'Engineer', 'Intern', 'Manager']
         },
-        type: 'input',
-        name: 'name',
-        message: "What's your employee's name?",
-        validate: nameEntry => {
-            if (nameEntry) {
-                return true;
-            } else {
-                console.log("Enter a name");
-                return false;
+        {
+            type: 'input',
+            name: 'name',
+            message: "What's your employee's name?",
+            validate: nameEntry => {
+                if (nameEntry) {
+                    return true;
+                } else {
+                    console.log("Enter a name");
+                    return false;
+                }
             }
         },
         {
-            type: 'input'
-            name: 'id'
-            message: "Enter the employee's email",
+            type: 'input',
+            name: 'id',
+            message: "What's your employee's ID?",
+            validate: idEntry => {
+                if (idEntry) {
+                    return true;
+                } else {
+                    console.log("Enter employee id");
+                    return false;
+                }
+            }
+        },
+        // {
+        //     type: 'input'
+        //     name: 'email'
+        //     message: "Enter the employee's email",
             // validate: email => {
                 // valid = expect(email).toEqual(expect.any(String));
                 // if (valid)
                 //finish later
             // }
+        // },
+        {
+            type: 'input',
+            name: 'managerNumber',
+            message: "Enter the employee's manager number",
+            when: (input) => input.role === "Manager",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log ("Enter a manager number")
+                }
+            }
         },
         {
             type: 'input',
@@ -45,7 +73,7 @@ const addEmployee = () => {
             message: "Enter the employee's github",
             when: (input) => input.role === "Engineer",
             validate: nameInput => {
-                if (nameInput ) {
+                if (nameInput) {
                     return true;
                 } else {
                     console.log ("Enter a github username")
@@ -64,13 +92,6 @@ const addEmployee = () => {
                     console.log ("Enter the employee's school")
                 }
             }
-        },
-        {
-            type: 'confirm',
-            name: 'newEmployee',
-            message: 'Would you like to add another employee?',
-            default: false
         }
-
     ])
 }
