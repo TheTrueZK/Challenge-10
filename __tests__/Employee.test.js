@@ -8,3 +8,9 @@ test('generates employee object', () => {
     expect(employee.id).toEqual(expect.any(Number));
     expect(employee.email).toEqual(expect.any(String));
 });
+
+test('returns role of employee', () => {
+    const employee = new Employee('Jerry', 45, 'jerryboberry@gmail.com');
+
+    expect(employee.getRole()).toEqual("Employee");
+}); 
